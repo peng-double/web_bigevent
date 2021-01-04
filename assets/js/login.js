@@ -35,7 +35,7 @@ $(function() {
         }
         $.ajax({
             type: "POST",
-            url: "http://api-breakingnews-web.itheima.net/api/reguser",
+            url: "/api/reguser",
             data,
             success: function(res) {
 
@@ -54,7 +54,7 @@ $(function() {
         // 阻止默认提交行为
         e.preventDefault()
         $.ajax({
-            url: 'http://api-breakingnews-web.itheima.net/api/login',
+            url: '/api/login',
             method: 'POST',
             // 快速获取表单中的数据
             data: $(this).serialize(),
