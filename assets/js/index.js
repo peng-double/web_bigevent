@@ -2,16 +2,20 @@ $(function() {
         const layer = layui.layer;
         getUserInfo();
         $(".layui-nav-itemself").on("click", function(e) {
-            layer.confirm('确认退出?', { icon: 3, title: '提示' }, function(index) {
-                //do something
-                localStorage.removeItem("token");
-                location.href = "/login.html"
-                layer.close(index);
-            });
-        })
+                layer.confirm('确认退出?', { icon: 3, title: '提示' }, function(index) {
+                    //do something
+                    localStorage.removeItem("token");
+                    location.href = "/login.html"
+                    layer.close(index);
+                });
+            })
+            // 点击基本资料
+            // $("#base_info").on("click", () => {
+            //     $("#base_info2").click;
+            // })
     })
     //获取 用户的基本信息
-function getUserInfo(param) {
+function getUserInfo() {
     $.ajax({
         type: "GET",
         url: "/my/userinfo",
@@ -38,8 +42,11 @@ function renderAvatar(user) {
         $(".layui-nav-img").show();
         $(".title_avatar").hide();
     } else {
-        let userName = user.username[0].toUpperCase();
 
+        let userName = user.username[0].toUpperCase();
+        if (user.nickname) {
+            userName = user.nickname[0]
+        }
         $(".title_avatar").html(userName);
         $(".layui-nav-img").hide();
         $(".title_avatar").show();
